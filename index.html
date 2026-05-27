@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>11:11 Make A Wish Cafe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f8f3ef;
+      color:#3d2a23;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    section{
+      padding:90px 8%;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:999;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(10px);
+      box-shadow:0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo img{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .logo h2{
+      font-size:28px;
+      color:#9d4e42;
+      font-family:'Playfair Display',serif;
+    }
+
+    nav ul{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      flex-wrap:wrap;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#333;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#9d4e42;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:140px 8% 80px;
+
+      background:
+      linear-gradient(
+        rgba(255,255,255,0.65),
+        rgba(255,255,255,0.7)
+      ),
+      url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:850px;
+      animation:fadeIn 1.5s ease;
+    }
+
+    .hero-logo{
+      width:170px;
+      margin:auto;
+      margin-bottom:25px;
+      border-radius:50%;
+      box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .hero h1{
+      font-size:72px;
+      color:#8a3f35;
+      font-family:'Playfair Display',serif;
+    }
+
+    .hero p{
+      margin-top:20px;
+      font-size:20px;
+      line-height:1.8;
+      color:#555;
+    }
+
+    .hero-btns{
+      margin-top:35px;
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 30px;
+      border:none;
+      border-radius:50px;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      transition:0.4s;
+      display:inline-block;
+    }
+
+    .primary{
+      background:#9d4e42;
+      color:white;
+    }
+
+    .primary:hover{
+      background:#7d3b30;
+      transform:translateY(-3px);
+    }
+
+    .secondary{
+      background:white;
+      color:#9d4e42;
+      border:2px solid #9d4e42;
+    }
+
+    .secondary:hover{
+      background:#9d4e42;
+      color:white;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:48px;
+      color:#8a3f35;
+      font-family:'Playfair Display',serif;
+    }
+
+    .section-title p{
+      margin-top:10px;
+      color:#666;
+    }
+
+    /* MENU */
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .menu-card{
+      background:white;
+      padding:30px;
+      border-radius:24px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.07);
+      transition:0.4s;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .menu-card h3{
+      margin-bottom:20px;
+      color:#9d4e42;
+      font-size:30px;
+    }
+
+    .menu-item{
+      margin-bottom:22px;
+    }
+
+    .menu-item-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:6px;
+      gap:10px;
+    }
+
+    .menu-item h4{
+      font-size:18px;
+    }
+
+    .menu-item span{
+      color:#9d4e42;
+      font-weight:700;
+    }
+
+    .menu-item p{
+      color:#666;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    /* REFRESHMENT */
+
+    .catalog-section{
+      background:#f6f1ec;
+    }
+
+    .catalog-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .catalog-card{
+      background:white;
+      padding:35px;
+      border-radius:28px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.06);
+      transition:0.4s;
+    }
+
+    .catalog-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .catalog-card h3{
+      color:#8a3f35;
+      margin-bottom:20px;
+      font-size:30px;
+      font-family:'Playfair Display',serif;
+    }
+
+    .catalog-card ul{
+      padding-left:20px;
+    }
+
+    .catalog-card li{
+      margin-bottom:14px;
+      color:#555;
+      line-height:1.8;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .about img{
+      border-radius:30px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .about-content h3{
+      font-size:42px;
+      color:#8a3f35;
+      margin-bottom:20px;
+    }
+
+    .about-content p{
+      line-height:1.9;
+      color:#555;
+      margin-bottom:18px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .contact-card{
+      background:white;
+      padding:30px;
+      border-radius:24px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .contact-card h4{
+      color:#8a3f35;
+      margin-bottom:12px;
+      font-size:24px;
+    }
+
+    .contact-card a{
+      text-decoration:none;
+      color:#9d4e42;
+      font-weight:600;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#8a3f35;
+      color:white;
+      text-align:center;
+      padding:35px 20px;
+    }
+
+    footer h3{
+      margin-bottom:10px;
+      font-size:28px;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      margin-top:15px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:white;
+      text-decoration:none;
+    }
+
+    /* WHATSAPP BUTTON */
+
+    .whatsapp-btn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#25D366;
+      color:white;
+      padding:14px 20px;
+      border-radius:50px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 8px 20px rgba(0,0,0,0.2);
+      z-index:999;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+        padding:15px 5%;
+      }
+
+      nav ul{
+        gap:12px;
+        justify-content:center;
+      }
+
+      .hero{
+        padding-top:200px;
+      }
+
+      .hero h1{
+        font-size:42px;
+        line-height:1.2;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .section-title h2{
+        font-size:34px;
+      }
+
+      .hero-logo{
+        width:120px;
+      }
+
+      .logo h2{
+        font-size:22px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .menu-grid,
+      .catalog-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image.jpg" alt="Cafe Logo">
+
+      <h2>ELEVENBITES</h2>
+
+    </div>
+
+    <ul>
+
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#catalog">Boxes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <img src="image.jpg" class="hero-logo" alt="Cafe Logo">
+
+      <h1>11:11 Make A Wish</h1>
+
+      <p>
+        Handcrafted coffee, crunchy bites,
+        creamy momos & unforgettable vibes.
+      </p>
+
+      <div class="hero-btns">
+
+        <a href="#menu" class="btn primary">
+          Explore Menu
+        </a>
+
+        <a href="https://www.instagram.com/_elevenbites_/"
+           target="_blank"
+           class="btn secondary">
+
+           Instagram
+
+        </a>
+
+        <a href="https://maps.app.goo.gl/tVvWM9btjESNPg847"
+           target="_blank"
+           class="btn primary">
+
+           Visit Location
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MENU -->
+
+  <section id="menu">
+
+    <div class="section-title">
+
+      <h2>Our Signature Menu</h2>
+
+      <p>Freshly brewed happiness in every sip & bite.</p>
+
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+
+        <h3>Icy Delights</h3>
+
+        <div class="menu-item">
+
+          <div class="menu-item-top">
+
+            <h4>Classic Cold Coffee</h4>
+
+            <span>₹59</span>
+
+          </div>
+
+          <p>Smooth creamy coffee over ice.</p>
+
+        </div>
+
+        <div class="menu-item">
+
+          <div class="menu-item-top">
+
+            <h4>Hazelnut Cold Coffee</h4>
+
+            <span>₹69</span>
+
+          </div>
+
+          <p>Nutty sweet refreshing delight.</p>
+
+        </div>
+
+      </div>
+
+      <div class="menu-card">
+
+        <h3>Steamy Sips</h3>
+
+        <div class="menu-item">
+
+          <div class="menu-item-top">
+
+            <h4>Hot Coffee</h4>
+
+            <span>₹29</span>
+
+          </div>
+
+          <p>Classic comforting hot coffee.</p>
+
+        </div>
+
+        <div class="menu-item">
+
+          <div class="menu-item-top">
+
+            <h4>Hot Chocolate</h4>
+
+            <span>₹60</span>
+
+          </div>
+
+          <p>Warm chocolate comfort drink.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- REFRESHMENT BOXES -->
+
+  <section id="catalog" class="catalog-section">
+
+    <div class="section-title">
+
+      <h2>Refreshment Boxes</h2>
+
+      <p>
+        Premium catering boxes for events,
+        sports meets & celebrations.
+      </p>
+
+    </div>
+
+    <div class="catalog-grid">
+
+      <div class="catalog-card">
+
+        <h3>Breakfast Refreshment Box</h3>
+
+        <ul>
+
+          <li>Poha + Fresh Fruits + Sweet Dish</li>
+
+          <li>
+            Veg Sandwich + Fruit Juice +
+            Veg Puff / Veg Wrap
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="catalog-card">
+
+        <h3>Sports Refreshment Box</h3>
+
+        <ul>
+
+          <li>
+            Veg Sandwich / Veg Wrap / Veg Puff +
+            Fruits + Muffins + Any Drink
+          </li>
+
+          <li>
+            Veg Sandwich / Veg Wrap / Veg Puff +
+            Protein Bar + Hydration Drink + Fruits
+          </li>
+
+          <li>
+            Veg Salad / Non-Veg Salad +
+            Protein Bar + Hydration Drink
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="catalog-card">
+
+        <h3>Bulk Event Catering</h3>
+
+        <ul>
+
+          <li>Corporate Events</li>
+          <li>Sports Events</li>
+          <li>College Festivals</li>
+          <li>Birthday Celebrations</li>
+          <li>Customized Bulk Orders Available</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="about">
+
+      <img src="logo.jpg" alt="Cafe Interior">
+
+      <div class="about-content">
+
+        <h3>About 11:11 Wish</h3>
+
+        <p>
+          11:11 Make A Wish is a premium handcrafted
+          coffee cafe designed for coffee lovers.
+        </p>
+
+        <p>
+          We serve handcrafted coffees, delicious snacks,
+          creamy momos and refreshment boxes.
+        </p>
+
+        <p>
+          More than a cafe — it’s a vibe,
+          a memory and a wish.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title">
+
+      <h2>Contact Us</h2>
+
+      <p>Book events, catering & cafe orders.</p>
+
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+
+        <h4>Instagram</h4>
+
+        <a href="https://www.instagram.com/_elevenbites_/"
+           target="_blank">
+
+           @_elevenbites_
+
+        </a>
+
+      </div>
+
+      <div class="contact-card">
+
+        <h4>Phone</h4>
+
+        <p>Rahul Sati</p>
+        <p>+91 99711 63323</p>
+
+        <br>
+
+        <p>Deepti Mamgain</p>
+        <p>+91 81785 97592</p>
+
+      </div>
+
+      <div class="contact-card">
+
+        <h4>Email</h4>
+
+        <p>elevennelevennn@gmail.com</p>
+
+      </div>
+
+      <div class="contact-card">
+
+        <h4>Location</h4>
+
+        <a href="https://maps.app.goo.gl/tVvWM9btjESNPg847"
+           target="_blank">
+
+           Open Google Maps
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>11:11 Make A Wish ☕</h3>
+
+    <p>Crafted with Coffee & Dreams</p>
+
+    <div class="footer-links">
+
+      <a href="https://www.instagram.com/_elevenbites_/"
+         target="_blank">
+
+         Instagram
+
+      </a>
+
+      <a href="https://maps.app.goo.gl/tVvWM9btjESNPg847"
+         target="_blank">
+
+         Google Maps
+
+      </a>
+
+    </div>
+
+    <p style="margin-top:18px;">
+      © 2026 11:11 Make A Wish Cafe — All Rights Reserved
+    </p>
+
+  </footer>
+
+  <!-- WHATSAPP BUTTON -->
+
+  <a href="https://wa.me/919971163323"
+     class="whatsapp-btn"
+     target="_blank">
+
+     WhatsApp Order
+
+  </a>
+
+</body>
+
+</html>
