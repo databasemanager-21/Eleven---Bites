@@ -1,0 +1,43 @@
+/* ADD THIS IN style.css */
+
+.catalog-section{
+  padding:90px 8%;
+  background:#f6f1ec;
+}
+
+.catalog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+
+.catalog-card{
+  background:white;
+  padding:35px;
+  border-radius:28px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+  transition:0.4s;
+}
+
+.catalog-card:hover{
+  transform:translateY(-8px);
+}
+
+.catalog-card h3{
+  color:#8a3f35;
+  margin-bottom:20px;
+  font-size:30px;
+  font-family:'Playfair Display', serif;
+}
+
+.catalog-card ul{
+  padding-left:20px;
+}
+
+.catalog-card li{
+  margin-bottom:14px;
+  color:#555;
+  line-height:1.8;
+  font-size:16px;
+}
